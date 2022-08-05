@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head_forms') %>
+
+<body>
+
+    <%- include('includes/navbar') %>
+
+    <div class="form-style-10">
+        <h1>Criar reunião</h1>
+        <form action="/users/criarReuniao" method="post">
+            <div class="section"><span>1</span>Dados</div>
+            <div class="inner-wrap">
+                <label for="time">
+            Time
+            <select name="time" id="time">
+                <% if (admin_times !== undefined) { %>
+                    <% admin_times.forEach(admin_time => { %>
+                        <option value="<%=admin_time.id%>"><%=admin_time.nome%></option>
+                    <% }) %>
+                <% } %>
+                <% if (membro_times !== undefined) { %>
+                    <% membro_times.forEach(membro_time => { %>
+                        <option value="<%=membro_time.id%>"><%=membro_time.nome%></option>
+                    <% }) %>
+                <% } %>
+            </select>
+        </label>
+                <label>Data <input type="date" name="data" required /></label>
+                <label>Hora <input type="time" name="hora" min="08:00" max="18:00" required /></label>
+            </div>
+
+            <div class="button-section">
+                <input type="submit" value="Criar!" />
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

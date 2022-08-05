@@ -1,0 +1,21 @@
+<nav class="nav">
+    <% if (user !== undefined) { %>
+        <div class="nav__title"><img src="public/images/<%= user.pfp %>"></div>
+        <div class="nav__title">Boas vindas, <%= user.nome %></div>
+        <ul class="nav__list">
+            <li class="nav__item"><a id="agenda" href="/users/agenda/<%=user.email%>">Minha Agenda</a></li>
+            <li class="nav__item"><a id="times" href="/users/times">Meus Times</a></li>
+            <li class="nav__item"><a id="membros_empresa" href="/empresas/<%= user.empresa %>">Membros da Empresa</a></li>
+            <li class="nav__item"><a id="cadastro_time" href="/times/cadastro">Cadastro de Time</a></li>
+            <li class="nav__item"><a id="cadastro_reuniao" href="/users/reuniao/<%=user.email%>">Criar Reunião</a></li>
+            <li class="nav__item"><a id="cadastro_empresa" href="/empresas/cadastro">Cadastro de Empresa</a></li>
+            <li class="nav__item"><a id="logout" href="/users/logout">Sair desta Conta</a></li>
+        </ul>
+    <%} else { %>
+        <ul class="nav__list">
+            <li class="nav__item"><a id="cadastro" href="/users/cadastro">Cadastrar-se</a></li>
+            <li class="nav__item"><a id="login" href="/users">Entrar no sistema</a></li>
+            <li class="nav__item"><a id="categorias" href="/empresas/cadastro">Cadastro de Empresa</a></li>
+        </ul>
+    <% } %>
+</nav>

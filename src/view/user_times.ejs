@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head_carrinho') %>
+
+<body>
+
+    <%- include('includes/navbar') %>
+
+    <div class="Cart-Container">
+        <div class="Header">
+            <h3 class="Heading">Times de <%= user.nome %></h3>
+        </div>
+
+        <% if (admin_times !== undefined) { %>
+            <% admin_times.forEach(admin_time => { %>
+                <div class="Cart-Items">
+                    <div class="about">
+                        <h1 class="title"><%= admin_time.nome %></h1>
+                        <h3 class="subtitle">Admin deste time</h3>
+                    </div>
+                    <div class="prices">
+                        <div class="save">Insira o e-mail de uma pessoa para convidá-la ao time:</div>
+                        <form action="/times/inviteMembro/<%= admin_time.id %>" method="post">
+                            <div class="save"><input type="text" name="email" /></div>
+                            <div class="remove"><input type="submit" class="button" value="Enviar convite!" /></div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+            <% }) %>
+        <% } %>
+
+        <% if (membro_times !== undefined) { %>
+            <% membro_times.forEach(membro_time => { %>
+                <div class="Cart-Items">
+                    <div class="about">
+                        <h1 class="title"><%= membro_time.nome %></h1>
+                        <h3 class="subtitle">Membro deste time</h3>
+                    </div>
+                </div>
+                <hr>
+            <% }) %>
+        <% } %>
+
+        <% if (convites !== undefined) { %>
+            <div class="Header">
+                <h3 class="Heading">Convites para times</h3>
+            </div>
+            <% convites.forEach(convite => { %>
+                <div class="Cart-Items">
+                    <div class="about">
+                        <h1 class="title">Você recebeu um convite para participar do time <%= convite.time_nome %></h1>
+                        <h3 class="subtitle">Aceitar convite?</h3>
+                        <div class="save"><a class="button-opcao" href="/times/entrarTime/<%= convite.time_id %>">Sim</a>&nbsp;&nbsp;&nbsp;<a class="button-opcao" href="/times/recusarConvite/<%= convite.time_id %>">Não</a></div>
+                    </div>
+                </div>
+                <hr>
+            <% }) %>
+        <% } %>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head_forms') %>
+
+<body>
+
+    <%- include('includes/navbar') %>
+    
+    <div class="form-style-10">
+        <h1>Cadastro de Time</h1>
+        <form action="/times/cadastrar" method="post">
+            <div class="section"><span>1</span>Dados</div>
+            <div class="inner-wrap">
+                <label>Nome <input type="text" name="nome" required /></label>
+                <label for="empresa">Empresa </label>
+                <select name="empresa" id="empresa">
+                    <option value="<%= empresa.id %>" selected><%= empresa.nome %></option>
+                </select>
+            </div>
+
+            <div class="button-section">
+                <input type="submit" value="Cadastrar Time" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>

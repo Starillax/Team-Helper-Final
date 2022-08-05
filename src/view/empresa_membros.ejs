@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head_carrinho') %>
+
+<body>
+
+    <%- include('includes/navbar') %>
+
+    <div class="Cart-Container">
+        <div class="Header">
+            <h3 class="Heading">Membros da empresa <%= empresa_nome.nome %></h3>
+        </div>
+
+        <% if (membros !== undefined) { %>
+            <% membros.forEach(membro => { %>
+                <div class="Cart-Items">
+                    <div class="about">
+                        <h1 class="title"><%= membro.nome %></h1>
+                    </div>
+                    <div class="prices">
+                        <div class="save"><a href="/users/agenda/<%= membro.email %>" class="button">Acesse sua agenda</a></div>
+                    </div>
+                </div>
+                <hr>
+            <% }) %>
+        <% } %>
+
+</body>
+
+</html>
